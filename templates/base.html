@@ -71,21 +71,13 @@
                             <li class="active"><a href="{% url 'home' %}">Home</a></li>
                             <li><a href="{% url 'about_us' %}">About Us</a>
                             </li>
-                            <li><a href="#">Food Menu</a>
-                                <ul>
-                                    <li><a href="menu-card.html">Menu Card</a></li>
-                                    <li><a href="menu-card-2.html">Menu Card 2</a></li>
-                                    <li><a href="menu-card-3.html">Menu Card 3</a></li>
-                                </ul>
+                            <li><a href="{% url 'menu' %}">Food Menu</a>
+
                             </li>
                             <li><a href="{% url 'reserve' %}">Reservation</a></li>
 
-                            <li><a href="#">Shop</a>
-                                <ul>
-                                    <li><a href="shop-page.html">Shop Page</a></li>
-                                    <li><a href="shop-single.html">Shop Single</a></li>
-                                    <li><a href="cart-page.html">Cart Page</a></li>
-                                </ul>
+                            <li><a href="#">Gallery</a>
+
                             </li>
                             <li><a href="contact-us.html">Contact</a></li>
                         </ul>
@@ -139,27 +131,12 @@
                                         <li class="active"><a href="{% url 'home' %}">Home</a></li>
                                         <li><a href="{% url 'about_us' %}">About Us</a>
                                         </li>
-                                        <li><a href="#">Food Menu</a>
-                                            <ul>
-                                                <li><a href="menu-card.html">Menu Card</a></li>
-                                                <li><a href="menu-card-2.html">Menu Card 2</a></li>
-                                                <li><a href="menu-card-3.html">Menu Card 3</a></li>
-                                            </ul>
+                                        <li><a href="{% url 'menu' %}">Food Menu</a>
                                         </li>
                                         <li><a href="{% url 'reserve' %}">Reservation</a></li>
-                                        <li><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">Blog Style 1</a></li>
-                                                <li><a href="blog-2.html">Blog Style 2</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Shop</a>
-                                            <ul>
-                                                <li><a href="shop-page.html">Shop Page</a></li>
-                                                <li><a href="shop-single.html">Shop Single</a></li>
-                                                <li><a href="cart-page.html">Cart Page</a></li>
-                                            </ul>
+
+                                        <li><a href="{% url 'gallery' %}">Gallery</a>
+
                                         </li>
                                         <li><a href="{% url 'contact_us' %}">Contact</a></li>
                                     </ul>

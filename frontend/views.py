@@ -21,3 +21,11 @@ class ReserveView(TemplateView):
 
 class AboutView(TemplateView):
     template_name = 'about.html'
+
+
+class MenuView(TemplateView):
+    template_name = 'menu.html'
+
+
+class GalleryView(TemplateView):
+    template_name = 'gallery.html'
