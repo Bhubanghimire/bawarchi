@@ -10,5 +10,10 @@ from django.views.generic import ListView, CreateView
 class HomeView(TemplateView):
     template_name = "index.html"
 
+
 class ContactView(TemplateView):
     template_name = 'contact-us.html'
+
+
+class ReserveView(TemplateView):
+    template_name = 'reserve.html'
