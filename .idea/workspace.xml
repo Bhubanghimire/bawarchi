@@ -12,7 +12,6 @@
       <change beforePath="$PROJECT_DIR$/templates/.idea/foodbuzz.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/blog-2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/blog-single.html" beforeDir="false" />
@@ -25,6 +24,7 @@
       <change beforePath="$PROJECT_DIR$/templates/menu-card-2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/menu-card-3.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/menu-card.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/not tested/about.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reserv.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reserve.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/shop-page.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/shop-single.html" beforeDir="false" />
@@ -59,6 +59,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\projects\Bawarchi\templates" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Bawarchi" type="Python.DjangoServer" factoryName="Django server">
       <module name="Bawarchi" />
@@ -92,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676552658975</updated>
-      <workItem from="1676552700039" duration="3219000" />
+      <workItem from="1676552700039" duration="3868000" />
     </task>
     <servers />
   </component>

@@ -17,3 +17,7 @@ class ContactView(TemplateView):
 
 class ReserveView(TemplateView):
     template_name = 'reserve.html'
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
