@@ -1,5 +1,5 @@
 from django.contrib import admin
-from administration.models import ContactUs, About
+from administration.models import ContactUs, About, Gallery
 
 
 # Register your models here.
@@ -11,3 +11,9 @@ class AboutAdmin(admin.ModelAdmin):
 @admin.register(ContactUs)
 class ContactUsAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'subject', 'created_at']
+
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ["id", "image", "created_at"]
+

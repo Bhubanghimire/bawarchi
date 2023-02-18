@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 
 from administration.form import ContactUsForm
-from administration.models import About, ContactUs
+from administration.models import About, ContactUs, Gallery
 
 
 # Create your views here
@@ -26,11 +26,7 @@ class ContactView(CreateView):
         context['about'] = About.objects.first()
         return context
 
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     # kwargs['request'] = self.request
-    #     print(kwargs)
-    #     return kwargs
+
 
 class ReserveView(TemplateView):
     template_name = 'reserve.html'
@@ -44,5 +40,8 @@ class MenuView(TemplateView):
     template_name = 'menu.html'
 
 
-class GalleryView(TemplateView):
+class GalleryView(ListView):
+    model = Gallery
     template_name = 'gallery.html'
+    context_object_name = 'image_list'
+    paginate_by = 2
