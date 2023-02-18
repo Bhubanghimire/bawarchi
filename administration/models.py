@@ -12,13 +12,16 @@ class About(models.Model):
     secondary_contact = models.CharField(max_length=20)
     openning_hours = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
+    district = models.CharField(max_length=250)
+    country = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "About"
+        verbose_name_plural = "ABOUT"
+
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=200)

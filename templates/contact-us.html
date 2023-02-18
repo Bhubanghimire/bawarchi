@@ -30,13 +30,16 @@
                                 <div class="post-content">
                                     <h6>office adress</h6>
                                     <p>{{ about.address }}</p>
+                                    <p>{{ about.district }}, {{ about.country }}</p>
+
 
                                 </div>
                             </div>
                             <div class="post-item">
                                 <div class="post-content">
                                     <h6>phone number : </h6>
-                                    <p>{{ about.primary_contact }}, {{ about.secondary_contact }}</p>
+                                    <p>{{ about.primary_contact }}</p>
+                                    <p> {{ about.secondary_contact }}</p>
                                 </div>
                             </div>
                             <div class="post-item">
@@ -51,21 +54,10 @@
                             <h5>Send Us A Message</h5>
                             <form class="d-flex flex-wrap justify-content-between" method="POST" action="{% url 'contact_us' %}">
                                   {% csrf_token %}
-{#                            {% for field in form %}#}
-{#                                <div class="form-group {% if field.errors %}has-error{% endif %}">#}
-{#                                {{ field }}#}
-{#                                {% for error in field.errors %}#}
-{#                                    <span class="help-block">{{ error }}</span>#}
-{#                                {% endfor %}#}
-{#                                </div>#}
-{#                            {% endfor %}#}
-
-                                    {{ form.name }}
-
+                                {{ form.name }}
                                 {{ form.email }}
                                 {{ form.subject }}
                                 {{ form.message }}
-
                                 <button type="submit" class="food-btn style-2"><span>Submit Message</span></button>
                             {% for field in form %}
                                 {% for error in field.errors %}
