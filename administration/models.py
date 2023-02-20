@@ -1,5 +1,7 @@
 from django.db import models
 
+from system.models import ConfigChoice
+
 
 # Create your models here.
 class About(models.Model):
@@ -47,3 +49,18 @@ class Gallery(models.Model):
 
     class Meta:
         verbose_name_plural = "GALLERY"
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=200)
+    category = models.ForeignKey(ConfigChoice, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="item")
+    description = models.CharField(max_length=200, blank=True)
+    price = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'ITEMS'
