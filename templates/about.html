@@ -28,12 +28,12 @@
                     <div class="col-lg-6 col-12">
                         <div class="about-content">
                             <div class="section-header">
-                                <span>Welcome FoodBuzz</span>
+                                <span>Welcome Bawarchi</span>
                                 <h3>About Restaurant History!</h3>
                             </div>
                             <div class="section-wrapper">
-                                <p>Synergistca conceptualize leveraged inte ectual capital through virtual and the a and Proactiviely initiate lrisk highyield a platforms after realtme froms growth that awesome tently matrix robusti method powerm foistcky Sytical concepta leved ntelectua anding capita hrough virtua nteectua that capta  the and Proactiviely initiate low risk highyield platforms after realtme froms that there andin Proctive initate low risk high yeld platform aftering Conven iterate optimal paradigms reliable techno</p>
-                                <a href="#" class="food-btn style-2"><span>get diraction</span></a>
+                                <p>{{ about.description }}</p>
+                                <a href="{%  url 'contact_us' %}" class="food-btn style-2"><span>get diraction</span></a>
                             </div>
                         </div>
                     </div>
@@ -115,12 +115,13 @@
                         <div class="team-bottom">
                             <div class="team-bottom-area">
                                 <div class="row justify-content-center align-items-center">
+                                    {%  for staff in staffs %}
                                     <div class="col-xl-4 col-md-6 col-12">
                                         <div class="team-item style-2">
                                             <div class="team-item-inner">
                                                 <div class="team-thumb">
                                                     <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/01.jpg' %}" alt="team-membar">
+                                                        <img src="{{ staff.photo.url }}" alt="team-membar">
                                                     </div>
                                                     <div class="self-intregration">
                                                         <div class="intregration-head">
@@ -158,92 +159,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-md-6 col-12">
-                                        <div class="team-item style-2">
-                                            <div class="team-item-inner">
-                                                <div class="team-thumb">
-                                                    <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/02.jpg' %}" alt="team-membar">
-                                                    </div>
-                                                    <div class="self-intregration">
-                                                        <div class="intregration-head">
-                                                            <span>Follow Me</span>
-                                                        </div>
-                                                        <div class="intregration-icon">
-                                                            <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Tom Holland</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
-                                                    <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>tomholland@gmail.com</span></li>
-                                                        <li>
-                                                            <i class="fas fa-share-alt-square"></i>
-                                                            <ul class="d-flex flex-wrap justify-content-start codex">
-                                                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                                                                <li><a class="basketball" href="#"><i class="fas fa-basketball-ball"></i></a></li>
-                                                                <li><a class="vimeo" href="#"><i class="fab fa-vimeo-v"></i></a></li>
-                                                                <li><a class="behance" href="#"><i class="fab fa-behance"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-md-6 col-12">
-                                        <div class="team-item style-2">
-                                            <div class="team-item-inner">
-                                                <div class="team-thumb">
-                                                    <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/03.jpg' %}" alt="team-membar">
-                                                    </div>
-                                                    <div class="self-intregration">
-                                                        <div class="intregration-head">
-                                                            <span>Follow Me</span>
-                                                        </div>
-                                                        <div class="intregration-icon">
-                                                            <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Zarina Wahab</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
-                                                    <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>zarinawahab@gmail.com</span></li>
-                                                        <li>
-                                                            <i class="fas fa-share-alt-square"></i>
-                                                            <ul class="d-flex flex-wrap justify-content-start codex">
-                                                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                                                                <li><a class="basketball" href="#"><i class="fas fa-basketball-ball"></i></a></li>
-                                                                <li><a class="vimeo" href="#"><i class="fab fa-vimeo-v"></i></a></li>
-                                                                <li><a class="behance" href="#"><i class="fab fa-behance"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
+
                                 </div>
                             </div>
                         </div>

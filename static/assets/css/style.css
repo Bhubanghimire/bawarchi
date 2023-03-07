@@ -172,7 +172,7 @@ li {
   list-style: none; }
 
 img {
-  height: auto;
+  max-height: 100%;
   max-width: 100%;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -968,7 +968,7 @@ aside {
     -moz-border-radius: 100%;
     border-radius: 100%; }
     .product-item .product-thumb .price {
-      width: 54px;
+      width: 70px;
       height: 54px;
       line-height: 48px;
       top: 10px;

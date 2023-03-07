@@ -98,22 +98,22 @@
                             <ul class="left">
                                 <li>
                                     <i class="far fa-clock"></i>
-                                    Sun-Fri: 9am-6pm Saterday Closed
+                                    Oppenning Time: {{ about.openning_hour }}
                                 </li>
                                 <li>
                                     <i class="fas fa-map-marker-alt"></i>
-                                    60/A Soft Road 24th Street, NY 1200
+                                    {{ about.address }}, {{ about.district }}
                                 </li>
                                 <li>
                                     <i class="fas fa-headset"></i>
-                                    Support@foodbuzz.com
+                                    {{ about.primary_email }}
                                 </li>
                             </ul>
                             <ul class="right">
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ about.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ about.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="{{ about.youtube }}"><i class="fab fa-youtube" target="_blank"></i></a></li>
+                                <li><a href="{{ about.twitter }}"><i class="fab fa-twitter" target="_blank"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                 <h5>Order with Best Resturent Food</h5>
                             </li>
                             <li>
-                                <a href="#" class="food-btn style-2">
+                                <a href="{% url 'reserve' %}" class="food-btn style-2">
                                     <span>Order Now</span>
                                 </a>
                             </li>
@@ -188,22 +188,22 @@
                             <ul class="info">
                                 <li>
                                     <i class="fas fa-home"></i>
-                                    <span>Suite 02 Level Tropical Center</span>
+                                    <span>{{ about.address}}, {{ about.district }}</span>
                                 </li>
                                 <li>
                                     <i class="fas fa-phone"></i>
-                                    <span>+880 1234 567890, 025984712</span>
+                                    <span>{{ about.primary_contact }}, {{ about.secondary_contact }}</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fas fa-globe-asia"></i>
-                                        <span>www.foodbuzz@gmail,com</span>
+                                        <span>{{ about.primary_email }}</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fas fa-headphones"></i>
-                                        <span>support@codexcoder.com</span>
+                                        <span>{{ about.secondary_email}}</span>
                                     </a>
                                 </li>
 
@@ -214,22 +214,13 @@
                         <div class="opening-time">
                             <h5>Opening Hours</h5>
                             <ul>
+                                {% for day in openning_hour %}
                                 <li>
-                                    <p><i class="far fa-clock"></i>Saterday</p>
-                                    <span>06:00 am - 08:00 pm</span>
+                                    <p><i class="far fa-clock"></i>{{ day.day }}</p>
+                                    <span>{{ day.time }}</span>
                                 </li>
-                                <li>
-                                    <p><i class="far fa-clock"></i>Sunday</p>
-                                    <span>09:00 am - 02:00 pm</span>
-                                </li>
-                                <li>
-                                    <p><i class="far fa-clock"></i>Monday</p>
-                                    <span>07:00 am - 09:00 pm</span>
-                                </li>
-                                <li>
-                                    <p><i class="far fa-clock"></i>Tuesday</p>
-                                    <span>02:00 am - 06:00 pm</span>
-                                </li>
+                                {%  endfor %}
+
                             </ul>
                         </div>
                     </div>
@@ -238,7 +229,7 @@
                             <h5>Subscribe Newsletter</h5>
                             <p>
                                 Sign Up For Our Latest News & Articles.
-                                We Wont Give You Spam Mails.
+                                We Won't Give You Spam Mails.
                             </p>
                             <div class="contact-search">
                                 <form class="searchForm" method="get" action="0">
@@ -247,24 +238,10 @@
                                 </form>
                             </div>
                             <ul class="follow_us">
-                                <li>
-                                    <p>Follow Us : </p>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-wifi"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </li>
+                               <li><a href="{{ about.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ about.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="{{ about.youtube }}"><i class="fab fa-youtube" target="_blank"></i></a></li>
+                                <li><a href="{{ about.twitter }}"><i class="fab fa-twitter" target="_blank"></i></a></li>
                             </ul>
                         </div>
                     </div>

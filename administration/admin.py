@@ -1,5 +1,5 @@
 from django.contrib import admin
-from administration.models import ContactUs, About, Gallery, Item
+from administration.models import ContactUs, About, Gallery, Item, OpeningHours, Staff
 
 
 # Register your models here.
@@ -20,4 +20,14 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
+    list_display = ["id", "created_at"]
+
+
+@admin.register(OpeningHours)
+class OpeningHoursAdmin(admin.ModelAdmin):
+    list_display = ["id", 'day', 'time', "created_at"]
+
+
+@admin.register(Staff)
+class StaffAdmin(admin.ModelAdmin):
     list_display = ["id", "created_at"]
