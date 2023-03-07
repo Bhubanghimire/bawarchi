@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 
 from administration.form import ContactUsForm
-from administration.models import About, ContactUs, Gallery, Item, Staff
+from administration.models import About, ContactUs, Gallery, Item, Staff, Testimonials
 
 
 # Create your views here
@@ -37,6 +37,7 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['staffs'] = Staff.objects.all()
+        context['testimonials'] = Testimonials.objects.all()
         return context
 
 

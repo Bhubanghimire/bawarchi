@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from system.models import ConfigChoice
@@ -108,3 +109,25 @@ class Staff(models.Model):
 
     class Meta:
         verbose_name_plural = 'STAFF'
+
+
+class Testimonials(models.Model):
+    name = models.CharField(max_length=200)
+    position = models.CharField(max_length=20)
+    image = models.ImageField(upload_to="testimonial")
+    comment = models.TextField()
+    rating = models.IntegerField(default=1,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ])
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'TESTIMONIALS'
+
+

@@ -121,7 +121,7 @@
                                             <div class="team-item-inner">
                                                 <div class="team-thumb">
                                                     <div class="t-thumb">
-                                                        <img src="{{ staff.photo.url }}" alt="team-membar">
+                                                        <img src="{{ staff.photo.url }}" style=" object-fit: cover;width: 400px;height: 340px;" alt="team-membar">
                                                     </div>
                                                     <div class="self-intregration">
                                                         <div class="intregration-head">
@@ -129,21 +129,19 @@
                                                         </div>
                                                         <div class="intregration-icon">
                                                             <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
+                                                                <li><a href="{{ staff.facebook }}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                                                <li><a href="{{ staff.instagram }}" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Zinnat Zara</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
+                                                    <a href="homechef-single.html"><h5 class="member-name">{{ staff.name }}</h5></a>
+                                                    <span class="member-dagi">{{ staff.position }}</span>
+                                                    <p class="member-details">{{ staff.description|truncatechars:80  }}</p>
                                                     <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>zinnatzara@gmail.com</span></li>
+                                                        <li><i class="icofont-phone"></i><span>{{ staff.contact }}</span></li>
+                                                        <li><i class="icofont-envelope"></i><span>{{ staff.email }}</span></li>
                                                         <li>
                                                             <i class="fas fa-share-alt-square"></i>
                                                             <ul class="d-flex flex-wrap justify-content-start codex">
@@ -183,15 +181,16 @@
                 <div class="section-wrapper">
                     <div class="clients-container">
                         <div class="swiper-wrapper">
+                            {%  for testimonial in testimonials %}
                             <div class="swiper-slide">
                                 <div class="clients-item text-center">
                                     <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/01.jpg' %}" alt="clients-image">
+                                        <img src="{{ testimonial.image.url }}" alt="clients-image">
                                     </div>
                                     <div class="clients-text">
                                         <p>
                                             <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize Conveniently are creative theme for business anarecaptiualize
+                                            {{ testimonial.comment }}
                                             <span><i class="fas fa-quote-right"></i></span>
                                         </p>
                                         <div class="rating">
@@ -201,63 +200,13 @@
                                             <span><i class="fa fa-star"></i></span>
                                             <span><i class="fas fa-star-half-alt"></i></span>
                                         </div>
-                                        <h6>Zinnat Zaara</h6>
-                                        <span>Senior Ui / ux Desiner</span>
+                                        <h6>{{ testimonial.name }}</h6>
+                                        <span>{{ testimonial.position }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="clients-item text-center">
-                                    <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/03.jpg' %}" alt="clients-image">
-                                    </div>
-                                    <div class="clients-text">
-                                        
-                                        <p>
-                                            <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme
-                                            Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize
-                                            Conveniently are creative theme for business anarecaptiualize
-                                            <span><i class="fas fa-quote-right"></i></span>
-                                        </p>
-                                        <div class="rating">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                        </div>
-                                        <h6>Mannan Khan</h6>
-                                        <span>Head Of Idia</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="clients-item text-center">
-                                    <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/02.jpg' %}" alt="clients-image">
-                                    </div>
-                                    <div class="clients-text">
-                                        
-                                        <p>
-                                            <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme
-                                            Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize
-                                            Conveniently are creative theme for business anarecaptiualize
-                                            <span><i class="fas fa-quote-right"></i></span>
-                                        </p>
-                                        <div class="rating">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                        </div>
-                                        <h6>Subrina Kabir</h6>
-                                        <span>Lead Desiner</span>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                     <div class="clients-pagination"></div>
@@ -266,53 +215,5 @@
         </section>
         <!-- clients area ends -->
 
-
-        <!-- Sponsor Section Start Here -->
-		<div class="sponsor-section">
-            <div class="container">
-                <div class="section-wrapper">
-                    <div class="sponsor-slider">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <div class="sponsor-thumb">
-                                        <a href="#"><img src="{% static 'assets/images/sponsor/01.png' %}" alt="food-sopnsor"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <div class="sponsor-thumb">
-                                        <a href="#"><img src="{% static 'assets/images/sponsor/02.png' %}" alt="food-sopnsor"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <div class="sponsor-thumb">
-                                        <a href="#"><img src="{% static 'assets/images/sponsor/03.png' %}" alt="food-sopnsor"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <div class="sponsor-thumb">
-                                        <a href="#"><img src="{% static 'assets/images/sponsor/04.png' %}" alt="food-sopnsor"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <div class="sponsor-thumb">
-                                        <a href="#"><img src="{% static 'assets/images/sponsor/05.png' %}" alt="food-sopnsor"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sponsor Section Ending Here -->
 
 {% endblock %}
