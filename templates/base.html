@@ -1,4 +1,5 @@
 {%  load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -228,12 +229,14 @@
                         <div class="news_letter">
                             <h5>Subscribe Newsletter</h5>
                             <p>
-                                Sign Up For Our Latest News & Articles.
+                                Sign Up For Our Latest Food Update.
                                 We Won't Give You Spam Mails.
                             </p>
                             <div class="contact-search">
-                                <form class="searchForm" method="get" action="0">
-                                    <input class="searchTerm"  placeholder="Your Email" autocomplete="off">
+                                <form class="searchForm" method="post" action="{% url 'home' %}">
+                                    {% csrf_token %}
+{#                                    <input class="searchTerm"  placeholder="Your Email" autocomplete="off">#}
+                                    {{ form|crispy }}
                                     <input type="submit" class="searchBtn" value="Subscribe!"/>
                                 </form>
                             </div>

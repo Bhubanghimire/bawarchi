@@ -61,10 +61,12 @@ class Gallery(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=200)
     category = models.ForeignKey(ConfigChoice, on_delete=models.CASCADE)
+    is_special = models.BooleanField(default=False)
     image = models.ImageField(upload_to="item")
     description = models.CharField(max_length=200, blank=True)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -131,3 +133,13 @@ class Testimonials(models.Model):
         verbose_name_plural = 'TESTIMONIALS'
 
 
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name_plural = 'SUBSCRIBER'

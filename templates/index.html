@@ -6,9 +6,9 @@
             <div class="overlay"></div>
             <div class="container">
                 <div class="banner-content text-center">
-                    <span>Welcome to our foodbuzz</span>
+                    <span>Welcome to Bawarchi</span>
                     <h2>It's The Food You Love</h2>
-                    <h3>best for restaurant wordpress theme</h3>
+                    <h3>best for restaurant food</h3>
                     <div class="banner-btn-group">
                         <a href="{% url 'reserve' %}" class="food-btn"><span>Order Now</span></a>
                     </div>
@@ -31,12 +31,12 @@
                     <div class="col-lg-6 col-12">
                         <div class="about-content">
                             <div class="section-header">
-                                <span>Welcome FoodBuzz</span>
+                                <span>Welcome Bawarchi</span>
                                 <h3>About Restaurant History!</h3>
                             </div>
                             <div class="section-wrapper">
-                                <p>Synergistca conceptualize leveraged inte ectual capital through virtual and the a and Proactiviely initiate lrisk highyield a platforms after realtme froms growth that awesome tently matrix robusti method powerm foistcky Sytical concepta leved ntelectua anding capita hrough virtua nteectua that capta  the and Proactiviely initiate low risk highyield platforms after realtme froms that there andin Proctive initate low risk high yeld platform aftering Conven iterate optimal paradigms reliable techno</p>
-                                <a href="#" class="food-btn style-2"><span>get diraction</span></a>
+                                <p>{{ about.description }}</p>
+                                <a href="{% url 'contact_us' %}" class="food-btn style-2"><span>get diraction</span></a>
                             </div>
                         </div>
                     </div>
@@ -56,15 +56,16 @@
                 </div>
                 <div class="section-wrapper">
                     <div class="row">
+                        {% for food in special_food %}
                         <div class="col-xl-3 col-md-6 col-12">
                             <div class="product-item">
                                 <div class="product-thumb">
-                                    <img src="{% static 'assets/images/product/01.jpg' %}" alt="food-product">
-                                    <span class="price">$10</span>
+                                    <img src="{{ food.image.url }}" alt="food-product">
+                                    <span class="price">Rs.{{ food.price }}</span>
                                 </div>
                                 <div class="product-content">
-                                    <p>Mexican Food</p>
-                                    <h6><a href="#">Cream Chicken Chiladas</a></h6>
+                                    <p>{{ food.category }}</p>
+                                    <h6><a href="#">{{ food.name }}</a></h6>
                                     <div class="rating">
                                         <i class="icofont-star"></i>
                                         <i class="icofont-star"></i>
@@ -75,63 +76,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6 col-12">
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <img src="{% static 'assets/images/product/02.jpg' %}" alt="food-product">
-                                    <span class="price">$20</span>
-                                </div>
-                                <div class="product-content">
-                                    <p>Mexican Food</p>
-                                    <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                    <div class="rating">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-12">
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <img src="{% static 'assets/images/product/03.jpg' %}" alt="food-product">
-                                    <span class="price">$30</span>
-                                </div>
-                                <div class="product-content">
-                                    <p>Mexican Food</p>
-                                    <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                    <div class="rating">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-12">
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <img src="{% static 'assets/images/product/04.jpg' %}" alt="food-product">
-                                    <span class="price">$40</span>
-                                </div>
-                                <div class="product-content">
-                                    <p>Mexican Food</p>
-                                    <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                    <div class="rating">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
@@ -146,36 +92,35 @@
                     <span>Foods Item</span>
                     <h2>Our Tasty Menu Today</h2>
                 </div>
+
+
                 <div class="section-wrapper">
                     <ul class="tab-bar">
-                        <li class="tablinks" id="defaultOpen" onclick="openCity(event, 'burger')">
-                            <img src="{% static 'assets/images/product/icon/01.png' %}" alt="food-product">
-                            <span>Burger Menu</span>
+                    {% for category in category_list %}
+                        <li class="tablinks" id="defaultOpen" onclick="openCity(event, '{{ category.id }}')">
+{% if category.image %}
+                            <img src="{{ category.image.url }}" alt="food-product">
+{% else %}
+{%  endif %}
+                            <span>{{ category.name }}</span>
                         </li>
-                        <li class="tablinks" onclick="openCity(event, 'pizza')">
-                            <img src="{% static 'assets/images/product/icon/02.png' %}" alt="food-product">
-                            <span>fizza menu</span>
-                        </li>
-                        <li class="tablinks" onclick="openCity(event, 'snaks')">
-                            <img src="{% static 'assets/images/product/icon/03.png' %}" alt="food-product">
-                            <span>snaks Menu</span>
-                        </li>
-                        <li class="tablinks" onclick="openCity(event, 'drinks')">
-                            <img src="{% static 'assets/images/product/icon/04.png' %}" alt="food-product">
-                            <span>drinks Menu</span>
-                        </li>
+                    {% endfor %}
                     </ul>
-                    <div id="burger" class="tabcontent">
+
+                    {% for category in category_list %}
+                    <div id="{{ category.id }}" class="tabcontent">
                         <div class="row no-gutters">
+                            {% for item in item_list %}
+                                {% if item.category.id == category.id %}
                             <div class="col-lg-6 col-12">
                                 <div class="product-item style-2">
                                     <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/01.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
+                                        <img src="{{ item.image.url }}" alt="food-product">
+                                        <span class="price">Rs.{{ item.price }}</span>
                                     </div>
                                     <div class="product-content">
                                         <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
+                                            <h6><a href="#">{{ item.name }}</a></h6>
                                             <div class="rating">
                                                 <i class="icofont-star"></i>
                                                 <i class="icofont-star"></i>
@@ -185,515 +130,25 @@
                                             </div>
                                         </div>
                                         <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
+                                            <p>{{ item.description }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/02.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/03.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/04.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/05.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/06.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/07.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/08.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                {% endif %}
+                            {% endfor %}
+
                         </div>
                     </div>
-                    <div id="pizza" class="tabcontent">
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/09.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/10.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/11.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/12.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="snaks" class="tabcontent">
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/13.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/14.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/15.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/16.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/17.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/18.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="drinks" class="tabcontent">
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/19.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/20.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/01.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="product-item style-2">
-                                    <div class="product-thumb">
-                                        <img src="{% static 'assets/images/product/02.jpg' %}" alt="food-product">
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h6><a href="#">Cream Chicken Chiladas</a></h6>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="product-desc">
-                                            <p>Conveniently imaiipact are worldwide andng datang arovem theme with there</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </section>
         <!-- Food Product Section Style 2 Ending here -->
 
         <!-- Booking Table Section Start Here -->
-        <section class="booking-table bg_size p-rel padding-tb" style="background-image: url("{% static 'assets/css/bg-image/contact-bg.jpg);">
+        <section class="booking-table bg_size p-rel padding-tb" style="background-image: url("{% static 'assets/css/bg-image/contact-bg.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="section-header">
@@ -709,38 +164,14 @@
                         <div class="col-lg-6 col-12">
                             <div class="contact-form">
                                 <form action="/">
-                                    <input type="text" name="name" placeholder="Full Name*">
+                                    <input type="text" name="name" placeholder="First Name*">
+                                    <input type="text" name="name" placeholder="Last Name*">
                                     <input type="email" name="email" placeholder="Your Eamil*">
                                     <input type="text" name="number" placeholder="Phone Number">
-                                    <div class="res-tab time-zone">
-                                        <select>
-                                            <option value="1">Enter Time</option>
-                                            <option value="2">10:00 AM</option>
-                                            <option value="3">11:00 AM</option>
-                                            <option value="4">12:00 PM</option>
-                                            <option value="5">01:00 PM</option>
-                                            <option value="6">02:00 PM</option>
-                                            <option value="7">03:00 PM</option>
-                                            <option value="8">04:00 PM</option>
-                                            <option value="9">05:00 PM</option>
-                                        </select>
-                                    </div>
-                                    <div class="res-tab table-zone">
-                                        <select>
-                                            <option value="1">Table Size</option>
-                                            <option value="2">2F - 3F</option>
-                                            <option value="3">2.5F - 3.5F</option>
-                                            <option value="4">3F - 4F</option>
-                                            <option value="5">3.5F - 4.5F</option>
-                                            <option value="6">4F - 5F</option>
-                                            <option value="7">4.5F - 5.5F</option>
-                                            <option value="8">5F - 6F</option>
-                                            <option value="9">5.5F - 6.5F</option>
-                                        </select>
-                                    </div>
                                     <input type="date" name="time" data-provide="datepicker">
+                                    <input type="time" id="appt" name="appt" class="res-tab time-zone" placeholder="Time">
                                     <textarea name="message" rows="6" placeholder="Message"></textarea>
-                                    <button type="submit" class="food-btn style-2"><span>book a table</span></button>
+                                    <button type="submit" class="food-btn style-2"><span>Order Now</span></button>
                                 </form>
 							</div>
                         </div>
@@ -751,7 +182,7 @@
         <!-- Booking Table Section Ending Here -->
 
 
-        <!-- Team Member Section Start here -->
+         <!-- Team Member Section Start here -->
         <div class="team-section style-2 padding-tb">
             <div class="container">
                 <div class="section-header">
@@ -764,12 +195,13 @@
                         <div class="team-bottom">
                             <div class="team-bottom-area">
                                 <div class="row justify-content-center align-items-center">
+                                    {%  for staff in staffs %}
                                     <div class="col-xl-4 col-md-6 col-12">
                                         <div class="team-item style-2">
                                             <div class="team-item-inner">
                                                 <div class="team-thumb">
                                                     <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/01.jpg' %}" alt="team-membar">
+                                                        <img src="{{ staff.photo.url }}" style=" object-fit: cover;width: 400px;height: 340px;" alt="team-membar">
                                                     </div>
                                                     <div class="self-intregration">
                                                         <div class="intregration-head">
@@ -777,21 +209,19 @@
                                                         </div>
                                                         <div class="intregration-icon">
                                                             <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
+                                                                <li><a href="{{ staff.facebook }}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                                                <li><a href="{{ staff.instagram }}" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Zinnat Zara</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
+                                                    <a href="homechef-single.html"><h5 class="member-name">{{ staff.name }}</h5></a>
+                                                    <span class="member-dagi">{{ staff.position }}</span>
+                                                    <p class="member-details">{{ staff.description|truncatechars:80  }}</p>
                                                     <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>zinnatzara@gmail.com</span></li>
+                                                        <li><i class="icofont-phone"></i><span>{{ staff.contact }}</span></li>
+                                                        <li><i class="icofont-envelope"></i><span>{{ staff.email }}</span></li>
                                                         <li>
                                                             <i class="fas fa-share-alt-square"></i>
                                                             <ul class="d-flex flex-wrap justify-content-start codex">
@@ -807,92 +237,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-md-6 col-12">
-                                        <div class="team-item style-2">
-                                            <div class="team-item-inner">
-                                                <div class="team-thumb">
-                                                    <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/02.jpg' %}" alt="team-membar">
-                                                    </div>
-                                                    <div class="self-intregration">
-                                                        <div class="intregration-head">
-                                                            <span>Follow Me</span>
-                                                        </div>
-                                                        <div class="intregration-icon">
-                                                            <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Tom Holland</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
-                                                    <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>tomholland@gmail.com</span></li>
-                                                        <li>
-                                                            <i class="fas fa-share-alt-square"></i>
-                                                            <ul class="d-flex flex-wrap justify-content-start codex">
-                                                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                                                                <li><a class="basketball" href="#"><i class="fas fa-basketball-ball"></i></a></li>
-                                                                <li><a class="vimeo" href="#"><i class="fab fa-vimeo-v"></i></a></li>
-                                                                <li><a class="behance" href="#"><i class="fab fa-behance"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-md-6 col-12">
-                                        <div class="team-item style-2">
-                                            <div class="team-item-inner">
-                                                <div class="team-thumb">
-                                                    <div class="t-thumb">
-                                                        <img src="{% static 'assets/images/team/03.jpg' %}" alt="team-membar">
-                                                    </div>
-                                                    <div class="self-intregration">
-                                                        <div class="intregration-head">
-                                                            <span>Follow Me</span>
-                                                        </div>
-                                                        <div class="intregration-icon">
-                                                            <ul>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                                <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-                                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a href="#" class="globe"><i class="fas fa-globe"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="team-content">
-                                                    <a href="homechef-single.html"><h5 class="member-name">Zarina Wahab</h5></a>
-                                                    <span class="member-dagi">Founder & CEO</span>
-                                                    <p class="member-details">Proce Aran Manu Proucs Rahe Conen Cuve Manu Produ Rahe Cuvaes Mana The Conen Testin Motin</p>
-                                                    <ul class="icon-style-list codex">
-                                                        <li><i class="icofont-phone"></i><span>+880 9234 567 890</span></li>
-                                                        <li><i class="icofont-envelope"></i><span>zarinawahab@gmail.com</span></li>
-                                                        <li>
-                                                            <i class="fas fa-share-alt-square"></i>
-                                                            <ul class="d-flex flex-wrap justify-content-start codex">
-                                                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                                                <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                                                                <li><a class="basketball" href="#"><i class="fas fa-basketball-ball"></i></a></li>
-                                                                <li><a class="vimeo" href="#"><i class="fab fa-vimeo-v"></i></a></li>
-                                                                <li><a class="behance" href="#"><i class="fab fa-behance"></i></a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
+
                                 </div>
                             </div>
                         </div>
@@ -903,8 +249,9 @@
         <!-- Team Member Section Ending here -->
 
 
-        <!-- clients area start -->
-        <section class="clients-area padding-tb bg_size p-rel" style="background-image: url({%  static 'assets/images/clients/clients_bg.jpg' %});">
+
+         <!-- clients area start -->
+        <section class="clients-area padding-tb bg_size p-rel" style="background-image: url({% static 'assets/images/clients/clients_bg.jpg' %});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="section-header text-center">
@@ -915,15 +262,16 @@
                 <div class="section-wrapper">
                     <div class="clients-container">
                         <div class="swiper-wrapper">
+                            {%  for testimonial in testimonials %}
                             <div class="swiper-slide">
                                 <div class="clients-item text-center">
                                     <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/01.jpg' %}" alt="clients-image">
+                                        <img src="{{ testimonial.image.url }}" alt="clients-image">
                                     </div>
                                     <div class="clients-text">
                                         <p>
                                             <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize Conveniently are creative theme for business anarecaptiualize
+                                            {{ testimonial.comment }}
                                             <span><i class="fas fa-quote-right"></i></span>
                                         </p>
                                         <div class="rating">
@@ -933,63 +281,13 @@
                                             <span><i class="fa fa-star"></i></span>
                                             <span><i class="fas fa-star-half-alt"></i></span>
                                         </div>
-                                        <h6>Zinnat Zaara</h6>
-                                        <span>Senior Ui / ux Desiner</span>
+                                        <h6>{{ testimonial.name }}</h6>
+                                        <span>{{ testimonial.position }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="clients-item text-center">
-                                    <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/03.jpg' %}" alt="clients-image">
-                                    </div>
-                                    <div class="clients-text">
+                            {% endfor %}
 
-                                        <p>
-                                            <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme
-                                            Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize
-                                            Conveniently are creative theme for business anarecaptiualize
-                                            <span><i class="fas fa-quote-right"></i></span>
-                                        </p>
-                                        <div class="rating">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                        </div>
-                                        <h6>Mannan Khan</h6>
-                                        <span>Head Of Idia</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="clients-item text-center">
-                                    <div class="clients-thumb">
-                                        <img src="{% static 'assets/images/clients/02.jpg' %}" alt="clients-image">
-                                    </div>
-                                    <div class="clients-text">
-
-                                        <p>
-                                            <span><i class="fas fa-quote-left"></i></span>
-                                            Proactivel expedite cost ectve andoportunties through aeconomical are creative a souncreative theme
-                                            Enthusiastical maintain creative effective anifunctionalities Conveniently are creative anarecaptiualize
-                                            Conveniently are creative theme for business anarecaptiualize
-                                            <span><i class="fas fa-quote-right"></i></span>
-                                        </p>
-                                        <div class="rating">
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fa fa-star"></i></span>
-                                            <span><i class="fas fa-star-half-alt"></i></span>
-                                        </div>
-                                        <h6>Subrina Kabir</h6>
-                                        <span>Lead Desiner</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="clients-pagination"></div>
@@ -997,5 +295,6 @@
             </div>
         </section>
         <!-- clients area ends -->
+
 
 {% endblock %}
