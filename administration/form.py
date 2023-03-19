@@ -19,7 +19,7 @@ class SubscribeForm(forms.ModelForm):
         model = Subscriber
         fields = ['email']
         widgets = {
-            'email': forms.TextInput(attrs={'class': 'searchTerm','placeholder':"Your Email", 'autocomplete':"off"})
+            'email': forms.TextInput(attrs={'class': 'searchTerm','placeholder':"Your Email", 'autocomplete':"off", 'width':'70%'})
         }
         labels = {
             "email":""

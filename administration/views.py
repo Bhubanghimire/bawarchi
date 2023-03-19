@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, CreateView
-
+from administration.signals import *
 from administration.form import SubscribeForm
 
 

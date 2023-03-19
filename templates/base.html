@@ -227,7 +227,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
                         <div class="news_letter">
-                            <h5>Subscribe Newsletter</h5>
+                            <h5>Subscribe Food Update</h5>
                             <p>
                                 Sign Up For Our Latest Food Update.
                                 We Won't Give You Spam Mails.
@@ -236,7 +236,7 @@
                                 <form class="searchForm" method="post" action="{% url 'home' %}">
                                     {% csrf_token %}
 {#                                    <input class="searchTerm"  placeholder="Your Email" autocomplete="off">#}
-                                    {{ form|crispy }}
+                                    {{ form.email|crispy }}
                                     <input type="submit" class="searchBtn" value="Subscribe!"/>
                                 </form>
                             </div>
@@ -257,7 +257,6 @@
         <!-- scrollToTop start here -->
 		<a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i></a>
 		<!-- scrollToTop ending here -->
-
 
 
 		<script src="{% static 'assets/js/jquery.js' %}"></script>
