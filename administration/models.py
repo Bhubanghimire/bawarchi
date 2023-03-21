@@ -143,3 +143,27 @@ class Subscriber(models.Model):
 
     class Meta:
         verbose_name_plural = 'SUBSCRIBER'
+
+
+class Order(models.Model):
+    status_choice = (
+        ('Applied', 'Applied'),
+        ('Accepted', 'Accepted'),
+        ('Completed', 'Completed'),
+        ('Cancelled', 'Cancelled')
+    )
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=100)
+    delivery_date = models.DateField()
+    delivery_time = models.TimeField()
+    status = models.CharField(max_length=200, choices=status_choice, default='Applied')
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.first_name
+
+    class Meta:
+        verbose_name_plural = 'ORDER'

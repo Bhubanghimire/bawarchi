@@ -70,19 +70,18 @@
 				<div class="mobile-menu-area">
 					<div class="mobile-menu-area-inner">
 						<ul>
-                            <li {% if '' in request.path %} class="active" {% endif %}><a href="{% url 'home' %}">Home</a></li>
-                            <li {% if '/about' in request.path %} class="active" {% endif %} ><a href="{% url 'about_us' %}">About Us</a>
-                            </li>
-                            <li><a href="{% url 'menu' %}">Food Menu</a>
+                                        <li {% if  request.path == '/' %} class="active" {% endif %}><a href="{% url 'home' %}">Home</a></li>
+                                        <li {% if request.path == '/about' %}class="active" {% endif %}><a href="{% url 'about_us' %}">About Us</a>
+                                        </li>
+                                        <li {% if request.path == '/menu' %}class="active" {% endif %}><a href="{% url 'menu' %}">Food Menu</a>
+                                        </li>
+                                        <li {% if request.path == '/reserve' %}class="active" {% endif %}><a href="{% url 'reserve' %}">Reservation</a></li>
 
-                            </li>
-                            <li><a href="{% url 'reserve' %}">Reservation</a></li>
+                                        <li {% if request.path == '/gallery' %}class="active" {% endif %}><a href="{% url 'gallery' %}">Gallery</a>
 
-                            <li><a href="#">Gallery</a>
-
-                            </li>
-                            <li><a href="contact-us.html">Contact</a></li>
-                        </ul>
+                                        </li>
+                                        <li {% if request.path == '/contact' %}class="active" {% endif %}><a href="{% url 'contact_us' %}">Contact</a></li>
+                                    </ul>
 					</div>
 				</div>
 			</nav>

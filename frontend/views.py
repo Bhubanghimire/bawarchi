@@ -7,13 +7,13 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 
-from administration.form import ContactUsForm
+from administration.form import ContactUsForm, ReserveForm
 from administration.models import About, ContactUs, Gallery, Item, Staff, Testimonials
 from system.models import ConfigChoice
 from administration.form import SubscribeForm
 
-# Create your views here
 
+# Create your views here
 
 
 class HomeView(TemplateView):
@@ -26,16 +26,15 @@ class HomeView(TemplateView):
         context['item_list'] = Item.objects.all()
         context['staffs'] = Staff.objects.all()
         context['testimonials'] = Testimonials.objects.all()
+        context['order_form'] = ReserveForm
         return context
 
     def post(self, request, *args, **kwargs):
         form = SubscribeForm(request.POST)
         if form.is_valid():
-            print("valid")
             form.save()
-            return redirect(request.META['HTTP_REFERER'])
-        else:
-            return redirect(request.META['HTTP_REFERER'])
+        return redirect(request.META['HTTP_REFERER'])
+
 
 
 class ContactView(CreateView):
@@ -47,6 +46,21 @@ class ContactView(CreateView):
 
 class ReserveView(TemplateView):
     template_name = 'reserve.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ReserveForm
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = ReserveForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect(request.META['HTTP_REFERER'])
+        else:
+            print(form.errors)
+            return redirect(request.META['HTTP_REFERER'])
 
 
 class AboutView(TemplateView):

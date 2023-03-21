@@ -163,14 +163,17 @@
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="contact-form">
-                                <form action="/">
-                                    <input type="text" name="name" placeholder="First Name*">
-                                    <input type="text" name="name" placeholder="Last Name*">
-                                    <input type="email" name="email" placeholder="Your Eamil*">
-                                    <input type="text" name="number" placeholder="Phone Number">
-                                    <input type="date" name="time" data-provide="datepicker">
-                                    <input type="time" id="appt" name="appt" class="res-tab time-zone" placeholder="Time">
-                                    <textarea name="message" rows="6" placeholder="Message"></textarea>
+                                <form action="{% url 'reserve' %}" method="POST">
+                                    {% csrf_token %}
+                                     {{ order_form.first_name }}
+
+                                {{ order_form.last_name }}
+                                {{ order_form.email }}
+                                    {{ order_form.phone }}
+                                    {{ order_form.delivery_date }}
+                                    {{ order_form.delivery_time }}
+                                {{ order_form.message }}
+
                                     <button type="submit" class="food-btn style-2"><span>Order Now</span></button>
                                 </form>
 							</div>
